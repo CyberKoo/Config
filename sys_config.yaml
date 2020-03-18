@@ -1,0 +1,30 @@
+Global:
+  location2emoji:
+    '中国': '🇨🇳'
+    '新加坡': '🇸🇬'
+    '台湾': '🇹🇼'
+    '美国': '🇺🇸'
+    '日本': '🇯🇵'
+    '韩国': '🇰🇷'
+    '俄罗斯': '🇷🇺'
+    '香港': '🇭🇰'
+    '越南': '🇻🇳'
+    '泰国': '🇹🇭'
+    '土耳其': '🇹🇷'
+    '英国': '🇬🇧'
+    '德国': '🇩🇪'
+    '澳门': '🇲🇴'
+Providers:
+  PudCloud:
+    regex: "([\u4e00-\u9fa5]+)[\\S\\s]*?(\\d{2})\\s?(nf)?(?:\\[(\\d+)倍\\])?"
+    prefix: Pud
+    definition:
+      location_name: 1
+      position: 2
+      netflix: 3
+      amplification: 4
+    group_merge:
+      '通用香港': '香港'
+    location2emoji:
+      '通用香港': '🇭🇰通用'
+

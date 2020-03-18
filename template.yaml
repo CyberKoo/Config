@@ -1,0 +1,124 @@
+# HTTP 端口
+port: 7890
+
+# SOCKS5 端口
+socks-port: 7891
+
+# Linux 及 macOS 的 redir 端口
+redir-port: 7892
+
+# 允许局域网机器访问
+allow-lan: true
+
+# Only applicable when setting allow-lan to true
+# "*": bind all IP addresses
+# 192.168.122.11: bind a single IPv4 address
+# "[aaaa::a8aa:ff:fe09:57d8]": bind a single IPv6 address
+bind-address: "0.0.0.0"
+
+# Rule / Global/ Direct (默认为 Rule 模式)
+mode: Rule
+
+# 设置日志等级 (默认为 info)
+# info / warning / error / debug / silent
+log-level: info
+
+# RESTful API for clash
+external-controller: "0.0.0.0:9090"
+
+# you can put the static web resource (such as clash-dashboard) to a directory, and clash would serve in `${API}/ui`
+# input is a relative path to the configuration directory or an absolute path
+# external-ui: /opt/clash/yacd
+
+# RESTful API 的口令 (可选)
+secret: 123456
+
+# experimental feature
+experimental:
+  ignore-resolve-fail: true # ignore dns resolve fail, default value is true
+
+# # experimental hosts, support wildcard (e.g. *.clash.dev Even *.foo.*.example.com)
+# # static domain has a higher priority than wildcard domain (foo.example.com > *.example.com)
+hosts:
+#   '*.clash.dev': 127.0.0.1
+#   'alpha.clash.dev': '::1'
+
+# DNS 设置
+dns:
+  enable: true
+  ipv6: true
+  enhanced-mode: redir-host #fake-ip
+  listen: 127.0.0.1:9653
+  nameserver:
+    - 114.114.114.114
+    - 223.5.5.5
+    - 1.2.4.8
+  fallback:
+    - tls://dns.rubyfish.cn:853
+    - tls://1.0.0.1:853
+    - tls://1.1.1.1:853
+    - https://cloudflare-dns.com/dns-query
+    - https://dns.google/dns-query
+    #- https://dns.rubyfish.cn/dns-query
+  fallback-filter:
+    geoip: true
+    ipcidr:
+      - 240.0.0.0/4
+# 代理服务器
+proxies:
+  ~
+
+# 代理组策略
+proxy-groups:
+  # 全局代理选择
+  - name: "PROXY"
+    type: select
+    url: http://www.bing.com
+    interval: 60
+    proxies:
+      - "__ANCHOR__"
+
+  # 白名单模式 PROXY，黑名单模式 DIRECT
+  - name: "Final"
+    type: select
+    proxies:
+      - "PROXY"
+      - "DIRECT"
+
+  # 锚点
+  - name: "__ANCHOR__"
+    type: select
+    proxies:
+      - "placeholder"
+
+  # 国际流媒体服务
+  - name: "GlobalMedia"
+    type: select
+    proxies:
+      - "__ANCHOR__"
+      - "PROXY"
+
+  # 大陆流媒体面向港澳台限定服务
+  - name: "HKMTMedia"
+    type: select
+    proxies:
+      - "DIRECT"
+      - "PROXY"
+
+  # Apple 服务代理
+  - name: "Apple"
+    type: select
+    proxies:
+      - "DIRECT"
+      - "PROXY"
+
+  # 运营商及声名狼藉网站劫持
+  - name: "Hijacking"
+    type: select
+    proxies:
+      - "REJECT"
+      - "DIRECT"
+
+rules:
+  # 拒绝访问7892端口
+  - DST-PORT,7892,REJECT
