@@ -14,6 +14,7 @@ Global:
     '英国': '🇬🇧'
     '德国': '🇩🇪'
     '澳门': '🇲🇴'
+    '印度': '🇮🇳'
 Providers:
   PudCloud:
     regex: "([\u4e00-\u9fa5]+)[\\S\\s]*?(\\d{2})\\s?(nf)?(?:\\[(\\d+)倍\\])?"
@@ -23,6 +24,7 @@ Providers:
       position: 2
       netflix: 3
       amplification: 4
+    preferred_group: '香港'
     group_merge:
       '通用香港': '香港'
     location2emoji:
