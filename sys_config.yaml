@@ -29,4 +29,21 @@ Providers:
       '通用香港': '香港'
     location2emoji:
       '通用香港': '🇭🇰通用'
-
+  FeverSS:
+    regex: "^([\u4e00-\u9fa5]+)(?:\\s|-).*?(Netflix|奈飞)?(?:-\\w|\\s-\\s\\w+)$"
+    prefix: FeverSS
+    definition:
+      location_name: 1
+      position: -1
+      netflix: 2
+      amplification: -1
+  FooAndFriends:
+    regex: "^(?:IPLC([\u4e00-\u9fa5]+)|[\u4e00-\u9fa5]+\\-([\u4e00-\u9fa5]+)|[\u4e00-\u9fa5]+\\w+\\-([\u4e00-\u9fa5]+)|([\u4e00-\u9fa5]+)\\w+)(?:[\\-\\d\\w]+\\[(解锁NF))?.*"
+    regex_collapse: true
+    prefix: FooAndFriends
+    preferred_group: '香港'
+    definition:
+      location_name: 1
+      position: -1
+      netflix: 2
+      amplification: -1
