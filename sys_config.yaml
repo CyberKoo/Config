@@ -38,7 +38,7 @@ Providers:
       netflix: 2
       amplification: -1
   FooAndFriends:
-    regex: "^(?:IPLC([\u4e00-\u9fa5]+)|[\u4e00-\u9fa5]+\\-([\u4e00-\u9fa5]+)|[\u4e00-\u9fa5]+\\w+\\-([\u4e00-\u9fa5]+)|([\u4e00-\u9fa5]+)\\w+)(?:[\\-\\d\\w]+\\[(解锁NF))?.*"
+    regex: "^(?:v1)?(?:(IPLC)[\u4e00-\u9fa5]+\\d?|[\u4e00-\u9fa5]+\\-([\u4e00-\u9fa5]+)|[\u4e00-\u9fa5]+\\w+\\-([\u4e00-\u9fa5]+)|([\u4e00-\u9fa5]+)\\w+)(?:[\\-\\d\\w]+\\[(解锁NF))?.*"
     regex_collapse: true
     prefix: FooAndFriends
     preferred_group: '香港'
