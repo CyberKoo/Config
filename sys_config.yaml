@@ -17,18 +17,22 @@ Global:
     '印度': '🇮🇳'
 Providers:
   PudCloud:
-    regex: "([\u4e00-\u9fa5]+)[\\S\\s]*?(\\d{2})\\s?(nf)?(?:\\[(\\d+)倍\\])?"
+    regex: "^G\\d+\\s(\\w{2,3})(\\d{2})$"
     prefix: Pud
     definition:
       location_name: 1
       position: 2
-      netflix: 3
-      amplification: 4
-    preferred_group: '香港'
-    group_merge:
-      '通用香港': '香港'
+      netflix: -1
+      amplification: -1
+    preferred_group: 'HK'
     location2emoji:
-      '通用香港': '🇭🇰通用'
+      'RU': '🇷🇺'
+      'HK': '🇭🇰'
+      'JP': '🇯🇵'
+      'KR': '🇰🇷'
+      'SGP': '🇸🇬'
+      'TW': '🇹🇼'
+      'US': '🇺🇸'
   FeverSS:
     regex: "^([\u4e00-\u9fa5]+)(?:\\s|-).*?(Netflix|奈飞)?(?:-\\w|\\s-\\s\\w+)$"
     prefix: FeverSS
@@ -40,7 +44,7 @@ Providers:
   FooAndFriends:
     regex: "^(?:v1)?(?:(IPLC)[\u4e00-\u9fa5]+\\d?|[\u4e00-\u9fa5]+\\-([\u4e00-\u9fa5]+)|[\u4e00-\u9fa5]+\\w+\\-([\u4e00-\u9fa5]+)|([\u4e00-\u9fa5]+)\\w+)(?:[\\-\\d\\w]+\\[(解锁NF))?.*"
     regex_collapse: true
-    prefix: FooAndFriends
+    prefix: FnF
     preferred_group: '香港'
     definition:
       location_name: 1
