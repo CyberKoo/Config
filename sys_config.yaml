@@ -17,13 +17,13 @@ Global:
     '印度': '🇮🇳'
 Providers:
   PudCloud:
-    regex: "^G\\d+\\s(\\w{2,3})(\\d{2})$"
+    regex: "^G\\d+\\s(\\w{2,3})\\s([A-Z]\\d)\\s(\\d)✕$"
     prefix: Pud
     definition:
       location_name: 1
-      position: 2
+      position: -1
       netflix: -1
-      amplification: -1
+      amplification: 3
     preferred_group: 'HK'
     location2emoji:
       'RU': '🇷🇺'
